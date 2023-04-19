@@ -16,6 +16,7 @@ class SigninActivity: Base<SignInViewMoodel, ActivitySigninBinding>(),SigninNavi
         bind = DataBindingUtil.setContentView(this@SigninActivity , R.layout.activity_signin)
         viewModel= ViewModelProvider(this).get(SignInViewMoodel::class.java)
         bind.vm=viewModel
+        viewModel.signinNavigator=this
         bind.signUpTextView.setOnClickListener {
             val intent= Intent(this@SigninActivity, RegisterActivity::class.java)
             startActivity(intent)
@@ -36,7 +37,7 @@ class SigninActivity: Base<SignInViewMoodel, ActivitySigninBinding>(),SigninNavi
     }
 
     override fun goTOHomeScreen() {
-       val intent=Intent(this,HomeActivity::class.java)
+       val intent=Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
 }
